@@ -6,8 +6,8 @@ import java.util.Scanner;
 public class task2 {
     public static void main(String[] args) {
 
-        String circleFile = "file1.txt";
-        String pointsFile = "file2.txt";
+        String circleFile = "task2/file1.txt";
+        String pointsFile = "task2/file2.txt";
 
 
         if (args.length >= 2) {

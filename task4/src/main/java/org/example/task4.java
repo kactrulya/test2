@@ -5,42 +5,49 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class task4 {
-
     public static void main(String[] args) {
-        String filePath = "numbers.txt";
+
+        String inputFile = "task4/numbers.txt";
+
+
+        if (args.length > 0) {
+            inputFile = args[0];
+        }
 
         try {
 
-            Scanner scanner = new Scanner(new File(args[0]));
+            Scanner scanner = new Scanner(new File(inputFile));
             int[] nums = readNumbers(scanner);
             scanner.close();
 
 
-            int moves = calculateMinMoves(nums);
+            int minMoves = calculateMinMoves(nums);
 
 
-            System.out.println(moves);
+            System.out.println(minMoves);
 
         } catch (FileNotFoundException e) {
-            System.out.println("Файл не найден! Положите numbers.txt в папку с проектом.");
+            System.out.println("Файл не найден: " + inputFile);
+
         }
     }
 
-
     private static int[] readNumbers(Scanner scanner) {
-        int[] nums = new int[100]; // Начальный размер
+
+        int[] temp = new int[100];
         int count = 0;
 
         while (scanner.hasNextInt()) {
-            if (count == nums.length) {
-                nums = Arrays.copyOf(nums, nums.length * 2); // Увеличиваем массив при необходимости
+            if (count == temp.length) {
+
+                temp = Arrays.copyOf(temp, temp.length * 2);
             }
-            nums[count++] = scanner.nextInt();
+            temp[count++] = scanner.nextInt();
         }
 
-        return Arrays.copyOf(nums, count); // Обрезаем до реального размера
-    }
 
+        return Arrays.copyOf(temp, count);
+    }
 
     private static int calculateMinMoves(int[] nums) {
         if (nums.length == 0) return 0;
