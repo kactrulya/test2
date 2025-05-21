@@ -24,21 +24,21 @@ public class task1 {
         List<Integer> path = new ArrayList<>();
         List<Integer> circularArray = new ArrayList<>();
 
-        // Создаем круговой массив [1, 2, 3, ..., n]
+
         for (int i = 1; i <= n; i++) {
             circularArray.add(i);
         }
 
-        int current = 0; // Начинаем с первого элемента
+        int current = 0;
 
         do {
-            // Добавляем текущий элемент в путь
+
             path.add(circularArray.get(current));
 
-            // Вычисляем следующий интервал
+
             current = (current + m - 1) % n;
 
-        } while (current != 0); // Пока не вернемся к первому элементу
+        } while (current != 0);
 
         return path;
     }
